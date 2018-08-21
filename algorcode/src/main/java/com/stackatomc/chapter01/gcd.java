@@ -16,7 +16,7 @@ public class gcd {
 
     public int gcdfunc(int p,int q){
 
-        if(q!=0) return p;
+        if(q==0) return p;
         int r=p%q;
 
         /* 1 Wrong: This is not direct to use a function, instead of return a function */
@@ -28,6 +28,6 @@ public class gcd {
 
         gcd gcdTest=new gcd();
 
-        System.out.println(" the greatest common divisor gcd is :" + gcdTest.gcdfunc(6,39));
+        System.out.println(" the greatest common divisor gcd is :" + gcdTest.gcdfunc(1111111,1234567));
     }
 }
