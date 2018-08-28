@@ -1,5 +1,6 @@
 package com.stackatomc.OfferBook;
 
+import java.util.EmptyStackException;
 import java.util.LinkedList;
 
 /**
@@ -9,47 +10,67 @@ import java.util.LinkedList;
  * @Date: 2018/8/26 22:27
  * @Version: 1.0
  */
+import java.util.Stack;
+
 public class Solution20 {
 
-        LinkedList<Integer> st=new LinkedList<Integer>();
+    Stack<Integer> st1=new Stack<Integer>();
+    Stack<Integer> recordmin=new Stack<Integer>();
+    //int min1=-1;
+    //int min2=-1;
 
-        public void push(int node) {
-            st.addLast(node);
-        }
-
-        public void pop() {
-            st.removeLast();
-        }
-
-        public int top() {
-            // 不删
-            int ele=st.getLast();
-            return ele;
-        }
-
-        public int min() {
-            if(st.size()==0)return -1;
-            int min=st.get(0);
-            for(int i=0;i<st.size()-1;++i){
-                if(min>st.get(i))min=st.get(i);
+    //1. 做了异常处理
+    public void push(int node) {
+        try{
+            if(node<recordmin.peek()){
+                recordmin.push(node);
             }
-            return min;
-
+        }catch(EmptyStackException e){
+            System.out.println("push()当前是空栈");
+            recordmin.push(node);
         }
+        st1.push(node);
+    }
+
+
+    public void pop() {
+        try{
+            if(recordmin.peek()==st1.pop())
+                recordmin.pop();
+        }catch(EmptyStackException e){
+            System.out.println("pop()当前是空栈");
+        }
+        return ;
+    }
+
+    public int top() {
+        try{
+            return st1.peek();
+        }catch(EmptyStackException e){
+            System.out.println("top()当前是空栈");
+        }
+        return -1;
+    }
+
+    public int min() {
+        try{
+            return recordmin.peek();
+        }catch(EmptyStackException e){
+            System.out.println("min()当前是空栈");
+        }
+        return -1;
+    }
 
     public static void main(String[] args) {
-        Solution20 stest=new Solution20();
-        stest.push(2);
-        stest.push(3);
-        stest.push(4);
-        stest.pop();
-//        String[] test1={"PSH3","MIN","PSH4","MIN","PSH2","MIN","PSH3","MIN","POP","MIN","POP","MIN","POP","MIN","PSH0","MIN"};
-//        for(String str:test1)
-//        {
-//            stest.push(Integer.parseInt(str));
-//        }
-
-        System.out.println(stest.min());
+        Solution20 s20=new Solution20();
+        s20.push(9);
+        s20.push(10);
+        s20.push(7);
+        s20.pop();
+        System.out.println(s20.min());
+        System.out.println(s20.min());
+        s20.push(5);
+        System.out.println(s20.min());
     }
 
 }
