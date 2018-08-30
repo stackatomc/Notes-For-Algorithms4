@@ -1,5 +1,4 @@
 package com.stackatomc.chapter01;
-import edu.princeton.cs.algs4.StdOut;
 
 /**
  * @Description: Calculate the greatest common divisor gcd is
