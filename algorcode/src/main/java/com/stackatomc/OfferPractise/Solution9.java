@@ -29,4 +29,9 @@ public class Solution9 {
         return result;
     }
 
+    public static void main(String[] args) {
+        Solution9 s9=new Solution9();
+        System.out.println(s9.JumpFloorII(3));
+    }
+
 }

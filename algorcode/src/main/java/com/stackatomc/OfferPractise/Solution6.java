@@ -10,6 +10,8 @@ package com.stackatomc.OfferPractise;
  * @Version: 1.0
  */
 public class Solution6 {
+
+    // 1 顺序查找
     public int minNumberInRotateArray(int [] array) {
         //考察排序前后比较
         if(array.length==0) return 0;
@@ -22,5 +24,30 @@ public class Solution6 {
             }
         }
         return smallele;
+    }
+
+    // 2 二分查找
+    public int minNumberInRotateArray2(int [] array) {
+        //考察排序前后比较
+        if(array.length==0) return 0;
+        if(array.length==1) return array[0];
+        return minNumberInRotateArray2(array,0,array.length-1);
+    }
+
+    public int minNumberInRotateArray2(int[] array,int start,int end){
+        if(start==end) return array[start+1];
+
+        int mid=(start+end)/2;
+        System.out.println(mid);
+        if(array[start]<array[mid])
+            //说明mid在左边
+            return minNumberInRotateArray2(array,mid,end);
+        else return minNumberInRotateArray2(array,start,mid);
+    }
+
+    public static void main(String[] args) {
+        Solution6 s6 =new Solution6();
+        int[] arr={3,4,5,1,2};
+        System.out.println(s6.minNumberInRotateArray2(arr));
     }
 }

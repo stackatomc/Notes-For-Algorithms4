@@ -24,7 +24,4 @@ public class Solution10 {
         return RectCover(target-1)+RectCover(target-2);
     }
 
-
-
-
 }

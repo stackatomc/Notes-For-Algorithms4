@@ -1,5 +1,8 @@
 package com.stackatomc.OfferPractise;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @File: Solution22
  * @Description: 从上往下打印二叉树
@@ -11,6 +14,23 @@ import java.util.ArrayList;
  */
 
 public class Solution22 {
+
+    public static ArrayList<Integer> PrintFromTopToBottom2(TreeNode root) {
+        if(root==null) return null;
+        ArrayList<Integer> arrayList=new ArrayList<Integer>();
+        Queue<TreeNode> qt=new LinkedList<TreeNode>();
+        qt.offer(root);
+        while(!qt.isEmpty()){
+            TreeNode curNode=qt.poll();
+            arrayList.add(curNode.val);
+            if(curNode.left!=null)
+                qt.offer(curNode.left);
+            if(curNode.right!=null)
+                qt.offer(curNode.right);
+        }
+        return arrayList;
+    }
+
     public static ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
                 ArrayList<TreeNode> treeNodes=new ArrayList<TreeNode>();
                 ArrayList<Integer> records=new ArrayList<Integer>();
@@ -57,7 +77,7 @@ public class Solution22 {
         t14.left=t12;
         t12.left=t16;
 
-        ArrayList<Integer> arr=PrintFromTopToBottom(t10);
+        ArrayList<Integer> arr=PrintFromTopToBottom2(t10);
 
         for(int i=0;i<arr.size();++i){
             System.out.print(arr.get(i)+"   ");

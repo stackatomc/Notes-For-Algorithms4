@@ -15,18 +15,31 @@ public class Solution5 {
     Stack<Integer> stack1 = new Stack<Integer>();
     Stack<Integer> stack2 = new Stack<Integer>();
 
-    public void push(int node) {
+    //public void push(int node) {
+        //.push(node);
+    //}
+    public void push(int node){
+        while(!stack2.isEmpty()){
+            stack1.push(stack2.pop());
+        }
         stack1.push(node);
     }
 
     public int pop() {
+        if(!stack2.isEmpty())
+            return stack2.pop();
         while(!stack1.isEmpty()){
+            System.out.println(stack1.search(5));
             stack2.push(stack1.pop());
         }
         int result=stack2.pop();
-        while(!stack2.isEmpty()){
-            stack1.push(stack2.pop());
-        }
         return result;
+    }
+
+    public static void main(String[] args) {
+        Solution5 s5=new Solution5();
+        s5.push(3);
+        s5.push(5);
+        System.out.println(s5.pop());
     }
 }
