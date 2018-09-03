@@ -1,4 +1,4 @@
-package com.stackatomc.OfferPractise;
+package com.stackatomc.tools;
 
 import static java.lang.Math.pow;
 
