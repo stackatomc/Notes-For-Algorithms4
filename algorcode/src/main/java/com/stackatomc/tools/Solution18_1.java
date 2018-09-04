@@ -1,20 +1,20 @@
-package com.stackatomc.OfferPractise;
+package com.stackatomc.tools;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
-
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @File: Solution18_1
- * @Description: 字符串排序使用回溯法
+ * @Description: 字符串排序使用回溯法(交换可得所有排序)
  * @Author: MayerFang
  * @Date: 2018/9/3 19:06
  * @Version: 1.0
  */
 public class Solution18_1 {
 
-    // 模仿数字排列的全排列实现
+    // 模仿数字排列的全排列实现（非该情况，中同）
     public ArrayList<String> permutation(String str){
         String[] strs=str.split("");
         ArrayList<String> arrayList=new ArrayList<String>();

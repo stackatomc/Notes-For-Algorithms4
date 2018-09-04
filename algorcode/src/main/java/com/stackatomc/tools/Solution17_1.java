@@ -5,7 +5,7 @@ import java.util.Queue;
 
 /**
  * @File: Solution17_1
- * @Description: 实现n位数从1递增输出数字排列（位运算+队列实现、char数组存储实现、全排列实现、StringBuilder.append（也可实现，同理字符串））
+ * @Description: 实现n位数从1递增输出数字排列（位运算+队列实现、char数组存储结合进位实现、单纯以全排列实现、StringBuilder.repalce（也可实现，同理字符串））
  * @Author: MayerFang
  * @Date: 2018/9/2 15:19
  * @Version: 1.0

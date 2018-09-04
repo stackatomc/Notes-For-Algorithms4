@@ -35,6 +35,7 @@ public class Solution18_2 {
                 node.next=null;
                 return;
             }
+
             //如果以上都不是，只能从头结点一直遍历找到尾节点前一个进行删除
             //注意deleteNode是一个引用，是一个句柄
         while(node!=null&&node!=deleteNode){
