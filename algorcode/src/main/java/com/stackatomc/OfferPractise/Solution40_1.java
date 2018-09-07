@@ -49,38 +49,38 @@ public class Solution40_1 {
         return start1;
     }
 
-    // 通过二叉树实现
-    public int getKnums(int[] arrs,int k){
-        if(arrs==null||k<0)return -1;
-        HashMap<Integer,Integer> hashMap=new HashMap<Integer, Integer>();
-        ListNode first=new ListNode(arrs[0]);
-        ListNode head=first;
-        for(int i=1;i<arrs.length;++i){
-
-            if(hashMap.size()<k){
-                if(hashMap.containsKey(arrs[i])){
-                    int values=hashMap.get(arrs[i]);
-                    hashMap.put(arrs[i],values+1);
-                    k=k-1;//要做个膝盖
-                    break;
-                }else{
-                    hashMap.put(arrs[i],1);
-                    head=AddNode(first,arrs[i]);
-                }
-            }else{
-                if(head.val>arrs[i]){
-
-                }else if(head.val==arrs[i]){
-                    int nums=hashMap.get(arrs[i]);
-                    head=remove(head);
-                    if(nums==1)
-                        hashMap.remove(arrs[i]);
-                    else
-                        hashMap.put(arrs[1],nums-1);
-                }
-            }
-        }
-    }
+    // 通过链表实现
+//    public int getKnums(int[] arrs,int k){
+//        if(arrs==null||k<0)return -1;
+//        HashMap<Integer,Integer> hashMap=new HashMap<Integer, Integer>();
+//        ListNode first=new ListNode(arrs[0]);
+//        ListNode head=first;
+//        for(int i=1;i<arrs.length;++i){
+//
+//            if(hashMap.size()<k){
+//                if(hashMap.containsKey(arrs[i])){
+//                    int values=hashMap.get(arrs[i]);
+//                    hashMap.put(arrs[i],values+1);
+//                    k=k-1;//要做个膝盖
+//                    break;
+//                }else{
+//                    hashMap.put(arrs[i],1);
+//                    head=AddNode(first,arrs[i]);
+//                }
+//            }else{
+//                if(head.val>arrs[i]){
+//
+//                }else if(head.val==arrs[i]){
+//                    int nums=hashMap.get(arrs[i]);
+//                    //head=remove(head);
+//                    if(nums==1)
+//                        hashMap.remove(arrs[i]);
+//                    else
+//                        hashMap.put(arrs[1],nums-1);
+//                }
+//            }
+//        }
+//    }
     public ListNode AddNode(ListNode head,int val){
         ListNode maxhead=head;
         ListNode listNode=new ListNode(val);
