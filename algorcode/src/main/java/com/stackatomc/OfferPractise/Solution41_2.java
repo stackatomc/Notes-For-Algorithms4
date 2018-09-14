@@ -12,10 +12,10 @@ import java.util.PriorityQueue;
  * @date 2018/9/10
  */
 public class Solution41_2 {
+    //1 利用PriorityQueue求中位数
     private static PriorityQueue<Integer> minHeap,maxHeap;
 
     public void insert(int num){
-
 
         //1. compare重写排序的方法解释
         //2. Java中Comparable和Comparator区别小结 https://www.cnblogs.com/xujian2014/p/5215082.html
