@@ -74,6 +74,7 @@ public class Solution42_21 {
 
     //2 向排好序的数组中插O(n)，但获取中位数为O(1)
     public int insertAndGetMiddle2(int num){
+        //需要移动n个数，所以时间复杂度是O(n)
         numstore=Arrays.copyOf(numstore,numstore.length+1);
         numstore[numstore.length-1]=num;
         Arrays.sort(numstore);
@@ -87,22 +88,38 @@ public class Solution42_21 {
     public int insertAndGetMiddle3(int num){
         if(head.val==-1){
             head.val=num;
-            preindex=head;
-            fastindex=head;}
+            }
         else{
-            ListNode curhead=head;
             ListNode nexthead=new ListNode(num);
-            while(num>curhead.val&&curhead.next!=null){
-                curhead=curhead.next;
-            }
-            if(num>curhead.val&&curhead.next==null){
-                curhead.next=nexthead;
+            if(num<head.val){
+                nexthead.next=head;
+                head=nexthead;
             }else{
-                nexthead.next=curhead;
+                ListNode curhead=head;
+                ListNode prehead=curhead;
+                while(num>curhead.val&&curhead.next!=null){
+                    prehead=curhead;
+                    curhead=curhead.next;
+                }
+                if(num>curhead.val&&curhead.next==null){
+                    curhead.next=nexthead;
+                }else{
+                    nexthead.next=curhead;
+                    prehead.next=nexthead;
+                }
             }
+        }
+
+        ListNode newhead=head;
+        preindex=head;
+        fastindex=head;
+        while(newhead.next!=null){
+            newhead=newhead.next;
             if(preindex==fastindex)fastindex=fastindex.next;
             else preindex=preindex.next;
         }
+        //System.out.println("preindex.val="+preindex.val);
+        //System.out.println("fastindex.val="+fastindex.val);
         if(preindex!=null&&fastindex!=null&&preindex==fastindex){
             return preindex.val;
         }else if(preindex!=null&&fastindex!=null&&preindex!=fastindex){
@@ -115,31 +132,31 @@ public class Solution42_21 {
     public static void main(String[] args) {
         Solution42_21 s4221=new Solution42_21();
         int[] testnums={3,33,44,23,2,3};
-        int[] testempty=new int[1];
-        testempty[0]=0;
-
-        //1 test O(1)插入
-        for(int i=0;i<testnums.length;++i){
-            testempty=s4221.insert1(testempty,testnums[i]);
-            for(int j=0;j<testempty.length;++j){
-                System.out.println("testempty["+j+"]="+testempty[j]);
-            }
-        }
-
-        //O(n)排序得中位数
-        System.out.println(s4221.GetMiddle(testempty));
+//        int[] testempty=new int[1];
+//        testempty[0]=0;
+//
+//        //1 test O(1)插入
+//        for(int i=0;i<testnums.length;++i){
+//            testempty=s4221.insert1(testempty,testnums[i]);
+//            for(int j=0;j<testempty.length;++j){
+//                System.out.println("testempty["+j+"]="+testempty[j]);
+//            }
+//        }
+//
+//        //O(n)排序得中位数
+//        System.out.println(s4221.GetMiddle(testempty));
 
 
         //2 test
-        numstore=new int[0];
-        for(int i=0;i<testnums.length;++i){
-            System.out.print(s4221.insertAndGetMiddle2(testnums[i])+"   ");
-        }
+//        numstore=new int[0];
+//        for(int i=0;i<testnums.length;++i){
+//            System.out.print(s4221.insertAndGetMiddle2(testnums[i])+"   ");
+//        }
 
         //3 test
         head=new ListNode(-1);
         for(int i=0;i<testnums.length;++i){
-            System.out.print(s4221.insertAndGetMiddle3(testnums[i])+"   ");
+            System.out.println(s4221.insertAndGetMiddle3(testnums[i])+"   ");
         }
     }
 
